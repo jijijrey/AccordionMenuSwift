@@ -22,6 +22,12 @@ open class AccordionTableViewController: UITableViewController {
     /// The data source
     open var dataSource: [Parent]!
     
+    /// The Cell Font
+    open var cellFont: UIFont = UIFont.boldSystemFont(ofSize: 17)
+    
+    /// The Cell Color
+    open var cellColor: UIColor = UIColor.white
+    
     /// Define wether can exist several cells expanded or not.
     open var numberOfCellsExpanded: NumberOfCellExpanded = .one
     
@@ -211,6 +217,9 @@ extension AccordionTableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: parentCellIdentifier, for: indexPath)
             cell.textLabel!.text = self.dataSource[parent].title
         }
+        
+        cell.textLabel!.textColor = self.cellColor
+        cell.textLabel!.font = self.cellFont
         
         return cell
     }
