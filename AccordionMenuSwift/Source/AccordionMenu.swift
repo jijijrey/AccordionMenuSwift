@@ -20,7 +20,7 @@ open class AccordionTableViewController: UITableViewController {
     let childCellIdentifier = "ChildCell"
     
     /// The data source
-    open var dataSource: [Parent]!
+    open var dataSource: [Parent]()
     
     /// The Cell Font (Parent)
     open var cellParentFont: UIFont = UIFont.boldSystemFont(ofSize: 17)
