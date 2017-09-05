@@ -10,6 +10,9 @@ import UIKit
 
 open class AccordionTableViewController: UITableViewController {
     
+    /// Selection Block
+    var didSelect: ((Int, Bool, Int) -> Void)?
+    
     /// The number of elements in the data source
     open var total = 0
     
@@ -236,13 +239,17 @@ extension AccordionTableViewController {
     
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let (parent, isParentCell, _) = self.findParent(indexPath.row)
+        let (parent, isParentCell, actualPosition) = self.findParent(indexPath.row)
         
         guard isParentCell else {
             // NSLog("A child was tapped!!!")
             
             // The value of the child is indexPath.row - actualPosition - 1
             // NSLog("The value of the child is \(self.dataSource[parent].childs[indexPath.row - actualPosition - 1])")
+            
+            if let handler = self.didSelect {
+                handler(parent, isParentCell, actualPosition)
+            }
             
             return
         }
