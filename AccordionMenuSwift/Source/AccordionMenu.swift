@@ -236,13 +236,13 @@ extension AccordionTableViewController {
     
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let (parent, isParentCell, actualPosition) = self.findParent(indexPath.row)
+        let (parent, isParentCell, _) = self.findParent(indexPath.row)
         
         guard isParentCell else {
-            NSLog("A child was tapped!!!")
+            // NSLog("A child was tapped!!!")
             
             // The value of the child is indexPath.row - actualPosition - 1
-            NSLog("The value of the child is \(self.dataSource[parent].childs[indexPath.row - actualPosition - 1])")
+            // NSLog("The value of the child is \(self.dataSource[parent].childs[indexPath.row - actualPosition - 1])")
             
             return
         }
@@ -253,6 +253,6 @@ extension AccordionTableViewController {
     }
     
     override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return !self.findParent(indexPath.row).isParentCell ? 44.0 : 64.0
+        return !self.findParent(indexPath.row).isParentCell ? 44.0 : 54.0
     }
 }
