@@ -11,7 +11,7 @@ import UIKit
 open class AccordionTableViewController: UITableViewController {
     
     /// Selection Block
-    open var didChooseItem: ((Int, Bool, Int) -> Void)?
+    open var didChooseItem: ((Int, Bool, Int, Int) -> Void)?
     
     /// The number of elements in the data source
     open var total = 0
@@ -248,7 +248,7 @@ extension AccordionTableViewController {
             // NSLog("The value of the child is \(self.dataSource[parent].childs[indexPath.row - actualPosition - 1])")
             
             if let handler = self.didChooseItem {
-                handler(parent, isParentCell, actualPosition)
+                handler(parent, isParentCell, actualPosition, indexPath.row)
             }
             
             return
