@@ -12,6 +12,7 @@ open class AccordionTableViewController: UITableViewController {
     
     /// Selection Block
     open var didChooseItem: ((Int, Bool, Int, Int) -> Void)?
+    open var didChooseParent: ((Int) -> Void)?
     
     /// The number of elements in the data source
     open var total = 0
@@ -252,6 +253,10 @@ extension AccordionTableViewController {
             }
             
             return
+        }
+        
+        if let handler = self.didChooseParent {
+            handler(parent)
         }
         
         self.tableView.beginUpdates()
